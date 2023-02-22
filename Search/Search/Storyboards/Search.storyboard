@@ -24,19 +24,19 @@
                                         <rect key="frame" x="24" y="64" width="378" height="36"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5XB-g8-AZf">
-                                                <rect key="frame" x="0.0" y="0.0" width="291" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="378" height="36"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZYd-vq-TOK">
                                                         <rect key="frame" x="8" y="8.5" width="20.5" height="18.5"/>
                                                         <color key="tintColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </imageView>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LD3-cx-18B">
-                                                        <rect key="frame" x="34.5" y="7" width="216.5" height="22"/>
+                                                        <rect key="frame" x="34.5" y="7" width="303.5" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="search"/>
                                                     </textField>
                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srd-7L-zar">
-                                                        <rect key="frame" x="251" y="4" width="40" height="28"/>
+                                                        <rect key="frame" x="338" y="4" width="40" height="28"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="srd-7L-zar" secondAttribute="height" multiplier="10:7" id="fWP-vc-bYb"/>
                                                             <constraint firstAttribute="height" constant="28" id="qLV-u5-wAC"/>
@@ -44,6 +44,9 @@
                                                         <color key="tintColor" red="0.090196078430000007" green="0.090196078430000007" blue="0.090196078430000007" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system" buttonSize="small"/>
+                                                        <connections>
+                                                            <action selector="actionCross:" destination="yNj-G0-2LL" eventType="touchUpInside" id="Fqj-Mq-BmY"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12149234690000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -63,17 +66,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2b-ep-Av9">
-                                                <rect key="frame" x="291" y="0.0" width="87" height="36"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Cancel">
-                                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
-                                                </buttonConfiguration>
-                                            </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="M2b-ep-Av9" firstAttribute="width" secondItem="j5P-gg-4aE" secondAttribute="width" multiplier="0.23" id="9L2-hu-LC5"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

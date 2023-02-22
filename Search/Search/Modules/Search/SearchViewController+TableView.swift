@@ -20,11 +20,11 @@ extension SearchViewController: UITableViewDataSource {
     
     // MARK: - TableView Cells DataSources
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return viewModel.search.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        return searchCell(tableView, indexPath: indexPath)
     }
 }
 
@@ -33,6 +33,7 @@ extension SearchViewController {
     
     func searchCell(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(with: SearchCell.self, for: indexPath)
+        cell.bind(viewModel.search[indexPath.row])
         return cell
     }
 }

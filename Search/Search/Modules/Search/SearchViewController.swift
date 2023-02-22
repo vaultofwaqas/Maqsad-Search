@@ -53,6 +53,12 @@ class SearchViewController: BaseViewController, UITextFieldDelegate {
     }
 
     private func setupTableViewNib() {
+        tableviewSearch.register(cellType: SearchCell.self)
+    }
+    
+    public func reloadTableView() {
+        tableviewSearch.reloadData()
+        tableviewSearch.layoutIfNeeded()
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -66,7 +72,18 @@ class SearchViewController: BaseViewController, UITextFieldDelegate {
         viewModel.didChangeTextForSearch(text: textField.text.orNil)
     }
     
+    func handleClearState() {
+        buttonSearchClear.isHidden = true
+        textfieldSearch.text = ""
+        viewModel.clearSearchResults()
+    }
+    
     // MARK: - Actions
+    @IBAction func actionCross(_ sender: UIButton) {
+        handleClearState()
+        hideLoader()
+        view.endEditing(true)
+    }
 }
 
 // MARK: - Bind Views
@@ -89,6 +106,8 @@ extension SearchViewController {
                 self.showSuccessMessage(withMessage)
             case .showErrorMessage(let withMessage):
                 self.showErrorMessage(withMessage)
+            case .reloadView:
+                self.reloadTableView()
             }
         }
     }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		773A25E529A6157E002F4A6F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25E429A6157E002F4A6F /* Search.swift */; };
+		773A25E829A619FC002F4A6F /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25E729A619FC002F4A6F /* SearchManager.swift */; };
 		774E730029A4FD890097F2EB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E72FF29A4FD890097F2EB /* BaseViewController.swift */; };
 		774E730229A4FDBB0097F2EB /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E730129A4FDBB0097F2EB /* Shortcuts.swift */; };
 		774E730529A4FE410097F2EB /* StoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E730429A4FE410097F2EB /* StoryBoard.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		773A25E429A6157E002F4A6F /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		773A25E729A619FC002F4A6F /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		774E72FF29A4FD890097F2EB /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		774E730129A4FDBB0097F2EB /* Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
 		774E730429A4FE410097F2EB /* StoryBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoard.swift; sourceTree = "<group>"; };
@@ -120,6 +124,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		773A25E229A61542002F4A6F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				773A25E329A6156C002F4A6F /* Search */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		773A25E329A6156C002F4A6F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				773A25E429A6157E002F4A6F /* Search.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		773A25E629A619ED002F4A6F /* SearchManager */ = {
+			isa = PBXGroup;
+			children = (
+				773A25E729A619FC002F4A6F /* SearchManager.swift */,
+			);
+			path = SearchManager;
+			sourceTree = "<group>";
+		};
 		774E72FD29A4FC4F0097F2EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +207,7 @@
 		774E731529A511660097F2EB /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				773A25E629A619ED002F4A6F /* SearchManager */,
 				774E731729A511800097F2EB /* APIHelper */,
 				774E731629A511770097F2EB /* Layer */,
 			);
@@ -250,6 +279,7 @@
 				7765C76329A4ED7400AEAD43 /* AppDelegate */,
 				774E72FE29A4FD660097F2EB /* ModuleSetup */,
 				774E72FD29A4FC4F0097F2EB /* Modules */,
+				773A25E229A61542002F4A6F /* Model */,
 				774E731229A504440097F2EB /* NavigationManager */,
 				774E731A29A511DF0097F2EB /* Helpers */,
 				7765C76529A4EDAB00AEAD43 /* Storyboards */,
@@ -456,6 +486,7 @@
 				774E730C29A5001A0097F2EB /* SearchRouter.swift in Sources */,
 				77857CD429A54D76005E72B3 /* UITableView+Extensions.swift in Sources */,
 				774E730D29A5001A0097F2EB /* SearchViewController.swift in Sources */,
+				773A25E829A619FC002F4A6F /* SearchManager.swift in Sources */,
 				774E731D29A512010097F2EB /* Log.swift in Sources */,
 				774E730E29A5001A0097F2EB /* SearchViewModel.swift in Sources */,
 				774E730529A4FE410097F2EB /* StoryBoard.swift in Sources */,
@@ -467,6 +498,7 @@
 				7765C73629A4E72F00AEAD43 /* SceneDelegate.swift in Sources */,
 				774E730029A4FD890097F2EB /* BaseViewController.swift in Sources */,
 				774E731129A500B10097F2EB /* UIStoryboard+Extension.swift in Sources */,
+				773A25E529A6157E002F4A6F /* Search.swift in Sources */,
 				774E731429A504500097F2EB /* NavigationManager.swift in Sources */,
 				774E732229A512750097F2EB /* ServiceConstants.swift in Sources */,
 			);

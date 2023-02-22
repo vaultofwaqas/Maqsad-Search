@@ -23,11 +23,11 @@ struct ServicePayload {
     }
     
     func getEndPoint() -> ServiceEndPoints {
-        return apiEndpoint ?? .test(.test)
+        return apiEndpoint ?? .test
     }
 
     func getParameters() -> [String: Any]? {
-        return parameters ?? [:]
+        return parameters
     }
     
     func getRequestType() -> URLRequest.RequestMethod {
@@ -38,7 +38,6 @@ struct ServicePayload {
         var headers = [String: String]()
         headers["Content-Type"] = "application/x-www-form-urlencoded"
         headers["accept"] = "*/*"
-        headers["Authorization"] = "bearer "
         return headers
     }
 }

@@ -10,18 +10,15 @@ import Foundation
 
 enum ServiceEndPoints {
 
-    case test(Test)
+    case searchResults(_ searchText: String)
+    case test
     
     var methodName: String {
         switch self {
-        case .test(let test):
-            return test.rawValue
+        case .searchResults(let searchText):
+            return "?q=\(searchText)"
+        case .test:
+            return ""
         }
     }
-}
-
-/*========================================================================*/
-
-enum Test: String {
-    case test = ""
 }

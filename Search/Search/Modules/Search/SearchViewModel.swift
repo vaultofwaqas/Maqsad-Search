@@ -12,6 +12,7 @@ protocol SearchViewModel {
     var viewSetup: SearchViewModelViewSetup? { get set }
     
     // MARK: - Variable Protocols
+    var search: [Search] { get set }
     
     // MARK: - Lifecycle Protocols
     func viewModelDidLoad()
@@ -23,6 +24,7 @@ protocol SearchViewModel {
     // MARK: - API Protocols
     
     // MARK: - Logic Protocols
+    func clearSearchResults()
     func isSearchTextEmpty(text: String?) -> Bool
     func didChangeTextForSearch(text: String)
 }
@@ -34,10 +36,13 @@ class SearchViewModelImpl {
     var viewSetup: SearchViewModelViewSetup?
     
     // MARK: - Variables
+    var searchManager: SearchManagerProtocol!
+    var search: [Search] = []
     
     // MARK: - Initializer
     init(router: SearchRouter) {
         self.router = router
+        searchManager = SearchManager()
     }
     
     // MARK: - For all of your viewBindings
@@ -48,6 +53,7 @@ class SearchViewModelImpl {
         case hideLoader
         case showSuccessMessage(withMessage: String)
         case showErrorMessage(withMessage: String)
+        case reloadView
     }
 }
 
@@ -70,11 +76,37 @@ extension SearchViewModelImpl {
 
 // MARK: - API Functions
 extension SearchViewModelImpl {
-
+    // Search API
+    func setSearchPayload(searchText: String) -> ServicePayload {
+        let payload = ServicePayload(apiEndpoint: .searchResults(searchText), requestType: .get)
+        return payload
+    }
+    
+    func searchAPI(_ withPayload: ServicePayload, _ searchText: String) {
+        viewSetup?(.showLoader)
+        searchManager.searchAPI(payload: withPayload, searchText: searchText) { [weak self] result in
+            guard let self = self else { return }
+            self.viewSetup?(.hideLoader)
+            switch result {
+            case .success(let (search, text)):
+                if searchText != text { return }
+                DispatchQueue.main.async {
+                    self.search = search.items
+                    self.viewSetup?(.reloadView)
+                }
+            case .failure: break
+            }
+        }
+    }
 }
 
 // MARK: - Logic Functions
 extension SearchViewModelImpl {
+    
+    func clearSearchResults() {
+        search = []
+        viewSetup?(.reloadView)
+    }
     
     func isSearchTextEmpty(text: String?) -> Bool {
         return text.orNil.isEmpty
@@ -83,6 +115,7 @@ extension SearchViewModelImpl {
     func didChangeTextForSearch(text: String) {
         if text.count >= 3 {
             //APICALL
+            searchAPI(setSearchPayload(searchText: text), text)
         }
     }
 

@@ -9,5 +9,5 @@ import Foundation
 
 struct ServiceConstants {
     
-    static var baseUrl = ""
+    static var baseUrl = "https://api.github.com/search/users"
 }
