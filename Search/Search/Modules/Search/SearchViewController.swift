@@ -78,6 +78,16 @@ class SearchViewController: BaseViewController, UITextFieldDelegate {
         viewModel.clearSearchResults()
     }
     
+    override func showLoader() {
+        activityIndicator.startAnimating()
+    }
+    
+    override func hideLoader() {
+        DispatchQueue.main.async { [self] in
+            activityIndicator.stopAnimating()
+        }
+    }
+    
     // MARK: - Actions
     @IBAction func actionCross(_ sender: UIButton) {
         handleClearState()

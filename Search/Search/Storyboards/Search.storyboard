@@ -88,10 +88,14 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="FDz-CB-VkN">
                                 <rect key="frame" x="0.0" y="120" width="414" height="742"/>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="6h8-6S-eop">
+                                <rect key="frame" x="188.5" y="389.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XcF-7s-VQe"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6h8-6S-eop" firstAttribute="centerY" secondItem="E8v-Hc-GEB" secondAttribute="centerY" constant="-40" id="3uQ-1g-Yvl"/>
                             <constraint firstItem="EYl-yc-iaX" firstAttribute="leading" secondItem="E8v-Hc-GEB" secondAttribute="leading" id="5TC-oA-dWW"/>
                             <constraint firstItem="FDz-CB-VkN" firstAttribute="leading" secondItem="XcF-7s-VQe" secondAttribute="leading" id="8dI-CW-naR"/>
                             <constraint firstItem="XcF-7s-VQe" firstAttribute="bottom" secondItem="FDz-CB-VkN" secondAttribute="bottom" id="IyR-Ru-97w"/>
@@ -99,9 +103,11 @@
                             <constraint firstItem="EYl-yc-iaX" firstAttribute="top" secondItem="E8v-Hc-GEB" secondAttribute="top" id="dN6-1Q-TE9"/>
                             <constraint firstItem="FDz-CB-VkN" firstAttribute="top" secondItem="EYl-yc-iaX" secondAttribute="bottom" id="nmg-vq-6iB"/>
                             <constraint firstAttribute="trailing" secondItem="EYl-yc-iaX" secondAttribute="trailing" id="w3i-67-7Hi"/>
+                            <constraint firstItem="6h8-6S-eop" firstAttribute="centerX" secondItem="E8v-Hc-GEB" secondAttribute="centerX" id="xqm-e5-cd6"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="6h8-6S-eop" id="j8j-Xn-xKi"/>
                         <outlet property="buttonSearchClear" destination="srd-7L-zar" id="b8d-Kr-cOi"/>
                         <outlet property="tableviewSearch" destination="FDz-CB-VkN" id="IsV-YR-W4m"/>
                         <outlet property="textfieldSearch" destination="LD3-cx-18B" id="gty-yz-9hf"/>

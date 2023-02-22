@@ -27,6 +27,7 @@ protocol SearchViewModel {
     func clearSearchResults()
     func isSearchTextEmpty(text: String?) -> Bool
     func didChangeTextForSearch(text: String)
+    func handlePaging(_ itemCount: Int) -> Bool
 }
 
 class SearchViewModelImpl {
@@ -38,6 +39,11 @@ class SearchViewModelImpl {
     // MARK: - Variables
     var searchManager: SearchManagerProtocol!
     var search: [Search] = []
+    
+    var searchText = ""
+    var perPage: Int = 9
+    var currentPage: Int = 1
+    let pageLimit: Int = 1000
     
     // MARK: - Initializer
     init(router: SearchRouter) {
@@ -77,13 +83,13 @@ extension SearchViewModelImpl {
 // MARK: - API Functions
 extension SearchViewModelImpl {
     // Search API
-    func setSearchPayload(searchText: String) -> ServicePayload {
-        let payload = ServicePayload(apiEndpoint: .searchResults(searchText), requestType: .get)
+    func setSearchPayload(searchText: String, perPage: Int, page: Int) -> ServicePayload {
+        let payload = ServicePayload(apiEndpoint: .searchResults(searchText, perPage, page), requestType: .get)
         return payload
     }
     
     func searchAPI(_ withPayload: ServicePayload, _ searchText: String) {
-        viewSetup?(.showLoader)
+        if search.isEmpty { viewSetup?(.showLoader) }
         searchManager.searchAPI(payload: withPayload, searchText: searchText) { [weak self] result in
             guard let self = self else { return }
             self.viewSetup?(.hideLoader)
@@ -91,7 +97,7 @@ extension SearchViewModelImpl {
             case .success(let (search, text)):
                 if searchText != text { return }
                 DispatchQueue.main.async {
-                    self.search = search.items
+                    self.search.append(contentsOf: search.items)
                     self.viewSetup?(.reloadView)
                 }
             case .failure: break
@@ -115,8 +121,20 @@ extension SearchViewModelImpl {
     func didChangeTextForSearch(text: String) {
         if text.count >= 3 {
             //APICALL
-            searchAPI(setSearchPayload(searchText: text), text)
+            searchText = text
+            searchAPI(setSearchPayload(searchText: text, perPage: perPage, page: currentPage), text)
         }
+    }
+    
+    func handlePaging(_ itemCount: Int) -> Bool {
+        if itemCount == search.count {
+            if currentPage < pageLimit {
+                currentPage += 1
+                searchAPI(setSearchPayload(searchText: searchText, perPage: perPage, page: currentPage), searchText)
+                return true
+            }
+        }
+        return false
     }
 
 }

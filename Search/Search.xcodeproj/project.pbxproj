@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		773A25E529A6157E002F4A6F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25E429A6157E002F4A6F /* Search.swift */; };
+		773A25E529A6157E002F4A6F /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25E429A6157E002F4A6F /* SearchModel.swift */; };
 		773A25E829A619FC002F4A6F /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25E729A619FC002F4A6F /* SearchManager.swift */; };
 		774E730029A4FD890097F2EB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E72FF29A4FD890097F2EB /* BaseViewController.swift */; };
 		774E730229A4FDBB0097F2EB /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E730129A4FDBB0097F2EB /* Shortcuts.swift */; };
@@ -60,7 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		773A25E429A6157E002F4A6F /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		773A25E429A6157E002F4A6F /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		773A25E729A619FC002F4A6F /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 		774E72FF29A4FD890097F2EB /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		774E730129A4FDBB0097F2EB /* Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
@@ -127,17 +127,17 @@
 		773A25E229A61542002F4A6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				773A25E329A6156C002F4A6F /* Search */,
+				773A25E329A6156C002F4A6F /* SearchModel */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		773A25E329A6156C002F4A6F /* Search */ = {
+		773A25E329A6156C002F4A6F /* SearchModel */ = {
 			isa = PBXGroup;
 			children = (
-				773A25E429A6157E002F4A6F /* Search.swift */,
+				773A25E429A6157E002F4A6F /* SearchModel.swift */,
 			);
-			path = Search;
+			path = SearchModel;
 			sourceTree = "<group>";
 		};
 		773A25E629A619ED002F4A6F /* SearchManager */ = {
@@ -498,7 +498,7 @@
 				7765C73629A4E72F00AEAD43 /* SceneDelegate.swift in Sources */,
 				774E730029A4FD890097F2EB /* BaseViewController.swift in Sources */,
 				774E731129A500B10097F2EB /* UIStoryboard+Extension.swift in Sources */,
-				773A25E529A6157E002F4A6F /* Search.swift in Sources */,
+				773A25E529A6157E002F4A6F /* SearchModel.swift in Sources */,
 				774E731429A504500097F2EB /* NavigationManager.swift in Sources */,
 				774E732229A512750097F2EB /* ServiceConstants.swift in Sources */,
 			);
