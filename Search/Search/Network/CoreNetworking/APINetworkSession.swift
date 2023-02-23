@@ -11,6 +11,8 @@ public typealias URLResponse = Result<(data: Data, response: HTTPURLResponse), E
 
 class APINetworkSession {
     
+    public init() {}
+    
     func dataTask(_ request: URLRequest, completionHandler: @escaping (URLResponse) -> Void) {
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let data = data, let response = response as? HTTPURLResponse {

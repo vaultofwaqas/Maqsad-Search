@@ -13,9 +13,15 @@ class SearchCell: UITableViewCell {
     @IBOutlet weak var labelLogin: UILabel!
     @IBOutlet weak var imageSearch: UIImageView!
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        imageSearch.roundedImage()
+    }
+    
     public func bind(_ search: Search) {
         labelType.text = search.type
         labelLogin.text = search.login
+        //ImageManager.setImage(url: search.avatarURL, imageView: imageSearch)
     }
     
 }

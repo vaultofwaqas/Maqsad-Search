@@ -8,6 +8,12 @@ import Foundation
 
 typealias SearchViewModelViewSetup = (SearchViewModelImpl.ViewSetup) -> Void
 
+enum Params: String {
+    case page = "page"
+    case perPage = "per_page"
+    case query = "q"
+}
+
 protocol SearchViewModel {
     var viewSetup: SearchViewModelViewSetup? { get set }
     
@@ -37,7 +43,7 @@ class SearchViewModelImpl {
     var viewSetup: SearchViewModelViewSetup?
     
     // MARK: - Variables
-    var searchManager: SearchManagerProtocol!
+    var searchManager: SearchApiManagerProtocol!
     var search: [Search] = []
     
     var searchText = ""
@@ -48,7 +54,7 @@ class SearchViewModelImpl {
     // MARK: - Initializer
     init(router: SearchRouter) {
         self.router = router
-        searchManager = SearchManager()
+        searchManager = SearchApiManager()
     }
     
     // MARK: - For all of your viewBindings
@@ -82,13 +88,20 @@ extension SearchViewModelImpl {
 
 // MARK: - API Functions
 extension SearchViewModelImpl {
+    
     // Search API
-    func setSearchPayload(searchText: String, perPage: Int, page: Int) -> ServicePayload {
-        let payload = ServicePayload(apiEndpoint: .searchResults(searchText, perPage, page), requestType: .get)
+    func getParams() -> [String: String] {
+        return [Params.query.rawValue: "\(searchText)",
+                Params.perPage.rawValue: "\(perPage)",
+                Params.page.rawValue: "\(currentPage)"]
+    }
+    
+    func setSearchPayload(searchText: String, perPage: Int, page: Int) -> Payload {
+        let payload = Payload(endPoint: .search(.users), parameters: getParams(), requestType: .get)
         return payload
     }
     
-    func searchAPI(_ withPayload: ServicePayload, _ searchText: String) {
+    func searchAPI(_ withPayload: Payload, _ searchText: String) {
         if search.isEmpty { viewSetup?(.showLoader) }
         searchManager.searchAPI(payload: withPayload, searchText: searchText) { [weak self] result in
             guard let self = self else { return }
@@ -97,7 +110,7 @@ extension SearchViewModelImpl {
             case .success(let (search, text)):
                 if searchText != text { return }
                 DispatchQueue.main.async {
-                    self.search.append(contentsOf: search.items)
+                    self.search.append(contentsOf: search)
                     self.viewSetup?(.reloadView)
                 }
             case .failure: break

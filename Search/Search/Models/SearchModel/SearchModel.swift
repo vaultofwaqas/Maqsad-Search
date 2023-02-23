@@ -7,19 +7,6 @@
 
 import Foundation
 
-// MARK: - SearchBase
-struct SearchBase: Codable {
-    let totalCount: Int
-    let incompleteResults: Bool
-    let items: [Search]
-
-    enum CodingKeys: String, CodingKey {
-        case totalCount = "total_count"
-        case incompleteResults = "incomplete_results"
-        case items
-    }
-}
-
 // MARK: - Search
 struct Search: Codable {
     let login: String

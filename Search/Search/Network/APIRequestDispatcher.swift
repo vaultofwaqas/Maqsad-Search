@@ -9,6 +9,8 @@ import Foundation
 
 /// Enum of API Errors
 enum APIError: Error {
+    /// Success
+    case success
     /// No data received from the server.
     case noData
     /// The server response was unauthorized.
@@ -29,35 +31,34 @@ enum APIError: Error {
 
 class APIRequestDispatcher<T> where T: Codable {
     
-    func parse(_ data: Data?) -> Result<T, Error> {
+    func parse(_ data: Data?) -> Result<ApiResponse<T>, Error> {
         guard let data = data else { return .failure(APIError.invalidResponse) }
         do {
             let decoder = JSONDecoder()
-            let apiResponse = try decoder.decode(T.self, from: data)
+            let apiResponse = try decoder.decode(ApiResponse<T>.self, from: data)
             return .success(apiResponse)
         } catch let exception {
             return .failure(APIError.parseError("Parsable error: \(exception)"))
         }
     }
-    
-    func verify(apiResponse: T?, statuscode: Int) -> Result<T?, Error> {
-        switch statuscode {
+}
+
+// MARK: Some Of The Assumed Status Code, Can Be Changed Based Upon Current Server Config.
+extension Int {
+    var status: APIError {
+        switch self {
         case 200...299:
-            if apiResponse == nil {
-                return .failure(APIError.noData)
-            }
-            return .success(apiResponse)
+            return .success
         case 401:
-            //Logout to login screen
-            return .failure(APIError.unauthorized(""))
+            return .unauthorized("")
         case 422:
-            return .failure(APIError.validation(""))
+            return .validation("")
         case 400...499:
-            return .failure(APIError.badRequest)
+            return .badRequest
         case 500...599:
-            return .failure(APIError.serverError)
+            return .serverError
         default:
-            return .failure(APIError.unknown)
+            return .unknown
         }
     }
 }
