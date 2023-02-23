@@ -21,7 +21,6 @@ class SearchCell: UITableViewCell {
     public func bind(_ search: Search) {
         labelType.text = search.type
         labelLogin.text = search.login
-        //ImageManager.setImage(url: search.avatarURL, imageView: imageSearch)
+        ImageManager.setImage(url: search.avatarURL, imageView: imageSearch)
     }
-    
 }

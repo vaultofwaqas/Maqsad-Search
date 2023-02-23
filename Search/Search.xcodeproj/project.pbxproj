@@ -15,6 +15,7 @@
 		773A25F229A77681002F4A6F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25F129A77681002F4A6F /* Result.swift */; };
 		773A25F729A78F1D002F4A6F /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25F629A78F1D002F4A6F /* UIImageView+Extension.swift */; };
 		773A25FA29A78F47002F4A6F /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25F929A78F47002F4A6F /* AppColors.swift */; };
+		773A25FD29A796CF002F4A6F /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25FC29A796CF002F4A6F /* ImageManager.swift */; };
 		774E730029A4FD890097F2EB /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E72FF29A4FD890097F2EB /* BaseViewController.swift */; };
 		774E730229A4FDBB0097F2EB /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E730129A4FDBB0097F2EB /* UtilityFunctions.swift */; };
 		774E730529A4FE410097F2EB /* StoryBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774E730429A4FE410097F2EB /* StoryBoard.swift */; };
@@ -79,6 +80,7 @@
 		773A25F129A77681002F4A6F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		773A25F629A78F1D002F4A6F /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		773A25F929A78F47002F4A6F /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		773A25FC29A796CF002F4A6F /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		774E72FF29A4FD890097F2EB /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		774E730129A4FDBB0097F2EB /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		774E730429A4FE410097F2EB /* StoryBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryBoard.swift; sourceTree = "<group>"; };
@@ -232,6 +234,14 @@
 			path = AppTheme;
 			sourceTree = "<group>";
 		};
+		773A25FB29A796C4002F4A6F /* ImageManager */ = {
+			isa = PBXGroup;
+			children = (
+				773A25FC29A796CF002F4A6F /* ImageManager.swift */,
+			);
+			path = ImageManager;
+			sourceTree = "<group>";
+		};
 		774E72FD29A4FC4F0097F2EB /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +324,7 @@
 		774E731A29A511DF0097F2EB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				773A25FB29A796C4002F4A6F /* ImageManager */,
 				773A25F829A78F3E002F4A6F /* AppTheme */,
 				774E730F29A500A20097F2EB /* Extensions */,
 				774E730329A4FE320097F2EB /* Enums */,
@@ -424,6 +435,7 @@
 				7765C72C29A4E72F00AEAD43 /* Sources */,
 				7765C72D29A4E72F00AEAD43 /* Frameworks */,
 				7765C72E29A4E72F00AEAD43 /* Resources */,
+				26507D2FEF0E517181ECF84F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -461,6 +473,7 @@
 				7765C74C29A4E73000AEAD43 /* Sources */,
 				7765C74D29A4E73000AEAD43 /* Frameworks */,
 				7765C74E29A4E73000AEAD43 /* Resources */,
+				D6C57FDC07194605883BCD9E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -566,6 +579,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		26507D2FEF0E517181ECF84F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Search/Pods-Search-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Search/Pods-Search-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Search/Pods-Search-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		35A50630899AE5258E323B17 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -610,6 +640,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D6C57FDC07194605883BCD9E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Search-SearchUITests/Pods-Search-SearchUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Search-SearchUITests/Pods-Search-SearchUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Search-SearchUITests/Pods-Search-SearchUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -624,6 +671,7 @@
 				773A25ED29A744F3002F4A6F /* EndPoints.swift in Sources */,
 				773A25F029A76EA0002F4A6F /* ApiResponse.swift in Sources */,
 				774E732C29A516F90097F2EB /* Optional+Extension.swift in Sources */,
+				773A25FD29A796CF002F4A6F /* ImageManager.swift in Sources */,
 				77857CD629A54DC3005E72B3 /* NSObject+Extensions.swift in Sources */,
 				774E732029A512360097F2EB /* Payload.swift in Sources */,
 				774E730C29A5001A0097F2EB /* SearchRouter.swift in Sources */,

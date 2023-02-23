@@ -16,4 +16,6 @@ target 'Search' do
     # Pods for testing
   end
 
+  pod 'Kingfisher'
+
 end
