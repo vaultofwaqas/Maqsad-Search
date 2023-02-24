@@ -11,6 +11,8 @@ import Foundation
 enum APIError: Error {
     /// Success
     case success
+    /// No Internet Connection
+    case noInternet
     /// No data received from the server.
     case noData
     /// The server response was unauthorized.

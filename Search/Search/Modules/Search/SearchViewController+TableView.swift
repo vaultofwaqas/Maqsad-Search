@@ -6,21 +6,16 @@
 
 import UIKit
 
-// MARK: - TableView Delegate
-extension SearchViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
-}
-
-// MARK: - TableView DataSource
-extension SearchViewController: UITableViewDataSource {
+// MARK: - TableView Delegate, DataSource
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return viewModel.numberOfSections()
     }
     
     // MARK: - TableView Cells DataSources
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.search.count
+        return viewModel.numberOfRowsInSection(section: viewModel.numberOfSections())
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,16 +24,8 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         switch viewModel.handlePaging(indexPath.item + 1) {
-        case true:
-            let spinner = UIActivityIndicatorView(style: .large)
-            spinner.startAnimating()
-            spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(100))
-
-            tableView.tableFooterView = spinner
-            tableView.tableFooterView?.isHidden = false
-        case false:
-            tableView.tableFooterView = nil
-            tableView.tableFooterView?.isHidden = true
+        case true: addBottomSpinner()
+        case false: removeBottomSpinner()
         }
     }
 }

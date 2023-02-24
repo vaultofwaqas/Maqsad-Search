@@ -7,15 +7,7 @@ target 'Search' do
 
   # Pods for Search
 
-  target 'SearchTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'SearchUITests' do
-    # Pods for testing
-  end
-
   pod 'Kingfisher'
+  pod 'Loaf'
 
 end

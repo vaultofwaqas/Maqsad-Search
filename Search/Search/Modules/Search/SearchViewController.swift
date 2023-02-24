@@ -11,13 +11,20 @@ class SearchViewController: BaseViewController, UITextFieldDelegate {
     var viewModel: SearchViewModel!
     
     // MARK: - Outlets
-    @IBOutlet private var tableviewSearch: UITableView!
-    @IBOutlet private var textfieldSearch: UITextField!
-    @IBOutlet private var buttonSearchClear: UIButton!
+    @IBOutlet weak var tableviewSearch: UITableView!
+    @IBOutlet weak var textfieldSearch: UITextField!
+    @IBOutlet weak var buttonSearchClear: UIButton!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Variables
+    private lazy var bottomSpinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.frame = CGRect(x: 0.0, y: 0.0, width: textfieldSearch.bounds.width, height: 70)
+        spinner.tintColor = AppColors.black
+        spinner.startAnimating()
+        return spinner
+    }()
     
     // MARK: - Lifecycle Functions
     override func viewDidLoad() {
@@ -29,11 +36,6 @@ class SearchViewController: BaseViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.viewModelWillAppear()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        viewModel.viewModelWillDisappear()
     }
     
     // MARK: - Set / Update Views
@@ -59,6 +61,16 @@ class SearchViewController: BaseViewController, UITextFieldDelegate {
     public func reloadTableView() {
         tableviewSearch.reloadData()
         tableviewSearch.layoutIfNeeded()
+    }
+    
+    func removeBottomSpinner() {
+        tableviewSearch.tableFooterView = nil
+        tableviewSearch.tableFooterView?.isHidden = true
+    }
+
+    func addBottomSpinner() {
+        tableviewSearch.tableFooterView = bottomSpinner
+        tableviewSearch.tableFooterView?.isHidden = false
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -112,10 +124,8 @@ extension SearchViewController {
                 self.showLoader()
             case .hideLoader:
                 self.hideLoader()
-            case .showSuccessMessage(let withMessage):
-                self.showSuccessMessage(withMessage)
-            case .showErrorMessage(let withMessage):
-                self.showErrorMessage(withMessage)
+            case .removeBottomSpinner:
+                self.removeBottomSpinner()
             case .reloadView:
                 self.reloadTableView()
             }

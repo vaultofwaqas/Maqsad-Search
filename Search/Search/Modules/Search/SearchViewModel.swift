@@ -23,13 +23,13 @@ protocol SearchViewModel {
     // MARK: - Lifecycle Protocols
     func viewModelDidLoad()
     func viewModelWillAppear()
-    func viewModelWillDisappear()
-    
-    // MARK: - Route Protocols
     
     // MARK: - API Protocols
     
     // MARK: - Logic Protocols
+    func numberOfSections() -> Int
+    func numberOfRowsInSection(section: Int) -> Int
+    
     func clearSearchResults()
     func isSearchTextEmpty(text: String?) -> Bool
     func didChangeTextForSearch(text: String)
@@ -47,9 +47,6 @@ class SearchViewModelImpl {
     var search: [Search] = []
     
     var searchText = ""
-    var perPage: Int = 9
-    var currentPage: Int = 1
-    let pageLimit: Int = 1000
     
     // MARK: - Initializer
     init(router: SearchRouter) {
@@ -63,8 +60,7 @@ class SearchViewModelImpl {
         case setupView
         case showLoader
         case hideLoader
-        case showSuccessMessage(withMessage: String)
-        case showErrorMessage(withMessage: String)
+        case removeBottomSpinner
         case reloadView
     }
 }
@@ -77,13 +73,6 @@ extension SearchViewModelImpl: SearchViewModel {
     }
     
     func viewModelWillAppear() {}
-    
-    func viewModelWillDisappear() {}
-}
-
-// MARK: - Route Functions
-extension SearchViewModelImpl {
-
 }
 
 // MARK: - API Functions
@@ -92,8 +81,8 @@ extension SearchViewModelImpl {
     // Search API
     func getParams() -> [String: String] {
         return [Params.query.rawValue: "\(searchText)",
-                Params.perPage.rawValue: "\(perPage)",
-                Params.page.rawValue: "\(currentPage)"]
+                Params.perPage.rawValue: "\(Constants.SearchView.perPage)",
+                Params.page.rawValue: "\(Constants.SearchView.currentPage)"]
     }
     
     func setSearchPayload(searchText: String, perPage: Int, page: Int) -> Payload {
@@ -108,12 +97,10 @@ extension SearchViewModelImpl {
             self.viewSetup?(.hideLoader)
             switch result {
             case .success(let (search, text)):
-                if searchText != text { return }
-                DispatchQueue.main.async {
-                    self.search.append(contentsOf: search)
-                    self.viewSetup?(.reloadView)
-                }
-            case .failure: break
+                if self.isTextSimilar(searchText, text) { return }
+                self.showSuccess(with: search)
+            case .failure(let message):
+                self.showError(with: message)
             }
         }
     }
@@ -122,8 +109,17 @@ extension SearchViewModelImpl {
 // MARK: - Logic Functions
 extension SearchViewModelImpl {
     
+    func numberOfSections() -> Int {
+        return 1
+    }
+    
+    func numberOfRowsInSection(section: Int) -> Int {
+        return search.count
+    }
+    
     func clearSearchResults() {
         search = []
+        Constants.SearchView.currentPage = 1
         viewSetup?(.reloadView)
     }
     
@@ -135,19 +131,52 @@ extension SearchViewModelImpl {
         if text.count >= 3 {
             //APICALL
             searchText = text
-            searchAPI(setSearchPayload(searchText: text, perPage: perPage, page: currentPage), text)
+            searchAPI(setSearchPayload(searchText: text,
+                                       perPage: Constants.SearchView.perPage,
+                                       page: Constants.SearchView.currentPage),
+                      text)
         }
     }
     
     func handlePaging(_ itemCount: Int) -> Bool {
         if itemCount == search.count {
-            if currentPage < pageLimit {
-                currentPage += 1
-                searchAPI(setSearchPayload(searchText: searchText, perPage: perPage, page: currentPage), searchText)
+            if Constants.SearchView.currentPage < Constants.SearchView.pageLimit {
+                Constants.SearchView.currentPage += 1
+                searchAPI(setSearchPayload(searchText: searchText,
+                                           perPage: Constants.SearchView.perPage,
+                                           page: Constants.SearchView.currentPage),
+                          searchText)
                 return true
             }
         }
         return false
+    }
+    
+    func isTextSimilar(_ currentText: String, _ responseText: String) -> Bool {
+        return currentText != responseText
+    }
+    
+    func showSuccess(with response: [Search]) {
+        DispatchQueue.main.async { [self] in
+            search.append(contentsOf: response)
+            viewSetup?(.reloadView)
+        }
+    }
+    
+    func showError(with message: String) {
+        DispatchQueue.main.async { [self] in
+            viewSetup?(.removeBottomSpinner)
+            switch !isInternetAvailable() {
+            case true:
+                showToast(with: Constants.ErrorTypes.noInternet)
+            case false:
+                showToast(with: Constants.ErrorTypes.somethingWrong)
+            }
+        }
+    }
+    
+    func showToast(with message: String) {
+        Toast.showError(with: message)
     }
 
 }

@@ -26,6 +26,7 @@ class APIService<T> where T: Codable {
 extension APIService {
     
     func makeCall(_ payload: Payload) {
+        
         let urlRequest = URLRequest(url: payload.getUrl(),
                                     method: payload.getRequestType(),
                                     header: nil,
@@ -40,11 +41,11 @@ extension APIService {
             case .success(let response):
                 
                 // MARK: For Debugging: The Code Snippet Helps to Print Raw JSON Before We try to decode it
-                /*if let jsonString = String(data: serverResponse.data, encoding: .utf8) {
-                 logger(log: "FOR DEBUGGING RAW JSON REPONSE")
-                 logger(log: "Status Code: \(serverResponse.response.statusCode)")
-                 logger(log: jsonString)
-                 }*/
+                if let jsonString = String(data: response.data, encoding: .utf8) {
+                 logger("FOR DEBUGGING RAW JSON REPONSE")
+                 logger("Status Code: \(response.response.statusCode)")
+                 logger(jsonString)
+                 }
                 
                 let statusCode = response.response.statusCode.status
                 

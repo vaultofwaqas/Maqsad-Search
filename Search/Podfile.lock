@@ -1,16 +1,20 @@
 PODS:
   - Kingfisher (7.6.1)
+  - Loaf (0.7.0)
 
 DEPENDENCIES:
   - Kingfisher
+  - Loaf
 
 SPEC REPOS:
   trunk:
     - Kingfisher
+    - Loaf
 
 SPEC CHECKSUMS:
   Kingfisher: 93a3c6d0d551658a31e19f21747e1d15cb39d525
+  Loaf: d69937cd00649f3fa260beb8b7aef0a1feb861ef
 
-PODFILE CHECKSUM: 34400babc362894dc9ff5731502555fbd62228fb
+PODFILE CHECKSUM: fd7990dda2a046549a50bbb6d3b733939ee8d61d
 
 COCOAPODS: 1.11.3

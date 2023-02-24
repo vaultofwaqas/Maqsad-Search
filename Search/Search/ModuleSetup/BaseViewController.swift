@@ -17,8 +17,4 @@ public class BaseViewController: UIViewController {
     public func showLoader() {}
     
     public func hideLoader() {}
-
-    public func showSuccessMessage(_: String) {}
-    
-    public func showErrorMessage(_: String) {}
 }

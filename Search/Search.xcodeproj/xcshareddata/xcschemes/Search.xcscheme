@@ -51,6 +51,17 @@
                ReferencedContainer = "container:Search.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "773A260129A7B7D3002F4A6F"
+               BuildableName = "Search-Tests.xctest"
+               BlueprintName = "Search-Tests"
+               ReferencedContainer = "container:Search.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
