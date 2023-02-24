@@ -12,7 +12,7 @@ enum Constants {
     enum SearchView {
         static let perPage = 9
         static var currentPage = 1
-        static let pageLimit = 1000
+        static var totalCount = 0
     }
     
     enum ErrorTypes {

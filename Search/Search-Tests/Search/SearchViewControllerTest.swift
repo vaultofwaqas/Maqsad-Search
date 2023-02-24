@@ -16,7 +16,7 @@ final class SearchViewControllerTest: XCTestCase {
     override func setUp() {
         viewController.loadView()
         viewController.viewDidLoad()
-        viewController.viewModel.search = mockUsers
+        viewController.viewModel.user = mockUsers
     }
     
     func testTableViewAndDelegates() {
@@ -37,11 +37,11 @@ final class SearchViewControllerTest: XCTestCase {
     
     func testCellForRow() {
         let cell = viewController.tableView(viewController.tableviewSearch, cellForRowAt: IndexPath.init(row: 0, section: 1))
-        XCTAssert(cell is SearchCell, "Cell should be SearchCell")
+        XCTAssert(cell is UserCell, "Cell should be SearchCell")
     }
     
     func testSearchCell() {
-        let cell = viewController.searchCell(viewController.tableviewSearch, indexPath: IndexPath.init(row: 0, section: 1))
-        XCTAssert(cell is SearchCell, "Cell should be SearchCell")
+        let cell = viewController.userCell(viewController.tableviewSearch, indexPath: IndexPath.init(row: 0, section: 1))
+        XCTAssert(cell is UserCell, "Cell should be SearchCell")
     }
 }

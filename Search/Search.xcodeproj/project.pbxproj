@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		773A25E529A6157E002F4A6F /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25E429A6157E002F4A6F /* SearchModel.swift */; };
+		773A25E529A6157E002F4A6F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25E429A6157E002F4A6F /* UserModel.swift */; };
 		773A25E829A619FC002F4A6F /* SearchApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25E729A619FC002F4A6F /* SearchApiManager.swift */; };
 		773A25ED29A744F3002F4A6F /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25EC29A744F3002F4A6F /* EndPoints.swift */; };
 		773A25F029A76EA0002F4A6F /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773A25EF29A76EA0002F4A6F /* ApiResponse.swift */; };
@@ -45,8 +45,8 @@
 		77857CD229A54CDC005E72B3 /* SearchViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77857CD129A54CDC005E72B3 /* SearchViewController+TableView.swift */; };
 		77857CD429A54D76005E72B3 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77857CD329A54D76005E72B3 /* UITableView+Extensions.swift */; };
 		77857CD629A54DC3005E72B3 /* NSObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77857CD529A54DC3005E72B3 /* NSObject+Extensions.swift */; };
-		77857CDB29A54E9B005E72B3 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77857CD929A54E9B005E72B3 /* SearchCell.swift */; };
-		77857CDC29A54E9B005E72B3 /* SearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77857CDA29A54E9B005E72B3 /* SearchCell.xib */; };
+		77857CDB29A54E9B005E72B3 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77857CD929A54E9B005E72B3 /* UserCell.swift */; };
+		77857CDC29A54E9B005E72B3 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 77857CDA29A54E9B005E72B3 /* UserCell.xib */; };
 		C4FE7285683531CA3053C989 /* Pods_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C715C126E89B73B8E6080B /* Pods_Search.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,7 @@
 		26C715C126E89B73B8E6080B /* Pods_Search.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Search.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B0030A7E4346E8A332B7E1 /* Pods-Search.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Search.debug.xcconfig"; path = "Target Support Files/Pods-Search/Pods-Search.debug.xcconfig"; sourceTree = "<group>"; };
 		59C97602761D3709C480921E /* Pods-Search.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Search.release.xcconfig"; path = "Target Support Files/Pods-Search/Pods-Search.release.xcconfig"; sourceTree = "<group>"; };
-		773A25E429A6157E002F4A6F /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
+		773A25E429A6157E002F4A6F /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		773A25E729A619FC002F4A6F /* SearchApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchApiManager.swift; sourceTree = "<group>"; };
 		773A25EC29A744F3002F4A6F /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		773A25EF29A76EA0002F4A6F /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
@@ -109,8 +109,8 @@
 		77857CD129A54CDC005E72B3 /* SearchViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchViewController+TableView.swift"; sourceTree = "<group>"; };
 		77857CD329A54D76005E72B3 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		77857CD529A54DC3005E72B3 /* NSObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extensions.swift"; sourceTree = "<group>"; };
-		77857CD929A54E9B005E72B3 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
-		77857CDA29A54E9B005E72B3 /* SearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCell.xib; sourceTree = "<group>"; };
+		77857CD929A54E9B005E72B3 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		77857CDA29A54E9B005E72B3 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		D4D00FB6E44049BF8787F2DD /* Pods-Search-SearchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Search-SearchUITests.release.xcconfig"; path = "Target Support Files/Pods-Search-SearchUITests/Pods-Search-SearchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EA4A51AF75512C8B0CD68179 /* Pods-SearchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchTests.debug.xcconfig"; path = "Target Support Files/Pods-SearchTests/Pods-SearchTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,17 +160,17 @@
 		773A25E229A61542002F4A6F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				773A25E329A6156C002F4A6F /* SearchModel */,
+				773A25E329A6156C002F4A6F /* UserModel */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		773A25E329A6156C002F4A6F /* SearchModel */ = {
+		773A25E329A6156C002F4A6F /* UserModel */ = {
 			isa = PBXGroup;
 			children = (
-				773A25E429A6157E002F4A6F /* SearchModel.swift */,
+				773A25E429A6157E002F4A6F /* UserModel.swift */,
 			);
-			path = SearchModel;
+			path = UserModel;
 			sourceTree = "<group>";
 		};
 		773A25E629A619ED002F4A6F /* SearchApiManager */ = {
@@ -310,7 +310,7 @@
 		774E730629A500070097F2EB /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				77857CD829A54E2D005E72B3 /* SearchCell */,
+				77857CD829A54E2D005E72B3 /* Cell */,
 				774E730829A5001A0097F2EB /* SearchRouter.swift */,
 				774E730929A5001A0097F2EB /* SearchViewController.swift */,
 				774E730A29A5001A0097F2EB /* SearchViewModel.swift */,
@@ -439,13 +439,13 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		77857CD829A54E2D005E72B3 /* SearchCell */ = {
+		77857CD829A54E2D005E72B3 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				77857CD929A54E9B005E72B3 /* SearchCell.swift */,
-				77857CDA29A54E9B005E72B3 /* SearchCell.xib */,
+				77857CD929A54E9B005E72B3 /* UserCell.swift */,
+				77857CDA29A54E9B005E72B3 /* UserCell.xib */,
 			);
-			path = SearchCell;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -541,7 +541,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7765C74029A4E73000AEAD43 /* LaunchScreen.storyboard in Resources */,
-				77857CDC29A54E9B005E72B3 /* SearchCell.xib in Resources */,
+				77857CDC29A54E9B005E72B3 /* UserCell.xib in Resources */,
 				774E730B29A5001A0097F2EB /* Search.storyboard in Resources */,
 				7765C73D29A4E73000AEAD43 /* Assets.xcassets in Resources */,
 			);
@@ -607,7 +607,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				773A262829A845A1002F4A6F /* UIAplication+Extension.swift in Sources */,
-				77857CDB29A54E9B005E72B3 /* SearchCell.swift in Sources */,
+				77857CDB29A54E9B005E72B3 /* UserCell.swift in Sources */,
 				77857CD229A54CDC005E72B3 /* SearchViewController+TableView.swift in Sources */,
 				773A25F729A78F1D002F4A6F /* UIImageView+Extension.swift in Sources */,
 				774E732A29A513D80097F2EB /* APIRequestDispatcher.swift in Sources */,
@@ -635,7 +635,7 @@
 				7765C73629A4E72F00AEAD43 /* SceneDelegate.swift in Sources */,
 				774E730029A4FD890097F2EB /* BaseViewController.swift in Sources */,
 				774E731129A500B10097F2EB /* UIStoryboard+Extension.swift in Sources */,
-				773A25E529A6157E002F4A6F /* SearchModel.swift in Sources */,
+				773A25E529A6157E002F4A6F /* UserModel.swift in Sources */,
 				774E731429A504500097F2EB /* NavigationManager.swift in Sources */,
 				774E732229A512750097F2EB /* ServiceConstants.swift in Sources */,
 			);

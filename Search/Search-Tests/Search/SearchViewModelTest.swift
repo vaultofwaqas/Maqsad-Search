@@ -15,7 +15,7 @@ final class SearchViewModelTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        viewModel.search = mockUsers
+        viewModel.user = mockUsers
     }
 
     func testNumberOfSections() {
@@ -31,10 +31,34 @@ final class SearchViewModelTest: XCTestCase {
     }
     
     func testFailurePaging() {
-        XCTAssert(viewModel.handlePaging(4) == false, "Failure Handle Paging")
+        XCTAssert(viewModel.handlePaging(4, 17461) == false, "Failure Handle Paging")
     }
     
     func testSuccessPaging() {
-        XCTAssert(viewModel.handlePaging(100) == true, "Success Handle Paging")
+        XCTAssert(viewModel.handlePaging(mockUsers.count, 17461) == true, "Success Handle Paging")
+    }
+    
+    func testSuccessIsTextSimilar() {
+        XCTAssert(viewModel.isTextSimilar("foo", "foo") == false, "Will update the list because the response is from the same searched text.")
+    }
+    
+    func testFailureIsTextSimilar() {
+        XCTAssert(viewModel.isTextSimilar("foo", "fo") == true, "Will noy update the list because response is not from the same searched text.")
+    }
+    
+    func testInternetAvailability() {
+        XCTAssert(isInternetAvailable() == true, "Internet should be available.")
+    }
+    
+    func testSuccessDidChangeTextForSearch() {
+        let searchText = viewModel.searchText
+        viewModel.didChangeTextForSearch(text: "foo")
+        XCTAssert(viewModel.searchText != searchText, "Text should update with search content")
+    }
+    
+    func testFailureDidChangeTextForSearch() {
+        let searchText = viewModel.searchText
+        viewModel.didChangeTextForSearch(text: "fo")
+        XCTAssert(viewModel.searchText == searchText, "Text should not update with search content")
     }
 }

@@ -41,11 +41,11 @@ extension APIService {
             case .success(let response):
                 
                 // MARK: For Debugging: The Code Snippet Helps to Print Raw JSON Before We try to decode it
-                if let jsonString = String(data: response.data, encoding: .utf8) {
+                /*if let jsonString = String(data: response.data, encoding: .utf8) {
                  logger("FOR DEBUGGING RAW JSON REPONSE")
                  logger("Status Code: \(response.response.statusCode)")
                  logger(jsonString)
-                 }
+                 }*/
                 
                 let statusCode = response.response.statusCode.status
                 

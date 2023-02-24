@@ -14,11 +14,6 @@ public extension UITableView {
         return dequeueReusableCell(withIdentifier: type.className, for: indexPath) as! T
     }
 
-    func dequeueReusableHeader<T: UITableViewHeaderFooterView>(with type: T.Type) -> T {
-        // swiftlint:disable:next force_cast
-        return dequeueReusableHeaderFooterView(withIdentifier: type.className) as! T
-    }
-
     func register<T: UITableViewCell>(cellType: T.Type, bundle: Bundle? = nil) {
         let className = cellType.className
         let nib = UINib(nibName: className, bundle: bundle)
@@ -27,11 +22,5 @@ public extension UITableView {
 
     func register<T: UITableViewCell>(cellTypes: [T.Type], bundle: Bundle? = nil) {
         cellTypes.forEach { register(cellType: $0, bundle: bundle) }
-    }
-
-    func register<T: UITableViewHeaderFooterView>(headerType: T.Type, bundle: Bundle? = nil) {
-        let className = headerType.className
-        let nib = UINib(nibName: className, bundle: bundle)
-        register(nib, forHeaderFooterViewReuseIdentifier: className)
     }
 }

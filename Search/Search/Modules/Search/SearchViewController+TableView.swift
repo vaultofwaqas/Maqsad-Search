@@ -19,11 +19,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return searchCell(tableView, indexPath: indexPath)
+        return userCell(tableView, indexPath: indexPath)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        switch viewModel.handlePaging(indexPath.item + 1) {
+        switch viewModel.handlePaging(indexPath.item + 1, Constants.SearchView.totalCount) {
         case true: addBottomSpinner()
         case false: removeBottomSpinner()
         }
@@ -33,9 +33,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - TableView Cell Views
 extension SearchViewController {
     
-    func searchCell(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(with: SearchCell.self, for: indexPath)
-        cell.bind(viewModel.search[indexPath.row])
+    func userCell(_ tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(with: UserCell.self, for: indexPath)
+        cell.bind(viewModel.user[indexPath.row])
         return cell
     }
 }

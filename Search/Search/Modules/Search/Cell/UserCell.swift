@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchCell: UITableViewCell {
+class UserCell: UITableViewCell {
     
     @IBOutlet weak var labelType: UILabel!
     @IBOutlet weak var labelLogin: UILabel!
@@ -18,9 +18,9 @@ class SearchCell: UITableViewCell {
         imageSearch.roundedImage()
     }
     
-    public func bind(_ search: Search) {
-        labelType.text = search.type
-        labelLogin.text = search.login
-        ImageManager.setImage(url: search.avatarURL, imageView: imageSearch)
+    public func bind(_ user: User) {
+        labelType.text = user.type
+        labelLogin.text = user.login
+        ImageManager.setImage(url: user.avatarURL, imageView: imageSearch)
     }
 }

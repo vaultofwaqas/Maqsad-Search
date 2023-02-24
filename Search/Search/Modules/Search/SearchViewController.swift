@@ -55,7 +55,7 @@ class SearchViewController: BaseViewController, UITextFieldDelegate {
     }
 
     private func setupTableViewNib() {
-        tableviewSearch.register(cellType: SearchCell.self)
+        tableviewSearch.register(cellType: UserCell.self)
     }
     
     public func reloadTableView() {

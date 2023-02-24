@@ -10,7 +10,7 @@ import XCTest
 
 final class MockUsers: XCTestCase {
     
-    func getUserViewModelData() -> [Search] {
+    func getUserViewModelData() -> [User] {
         let testBundle = Bundle(for: type(of: self))
         guard let filePath = testBundle.path(forResource: "Users", ofType: "json") else {
             fatalError()
@@ -19,7 +19,7 @@ final class MockUsers: XCTestCase {
         do {
             let data = try Data(contentsOf: fileUrl)
             let decoder = JSONDecoder()
-            let response = try decoder.decode(ApiResponse<[Search]>.self, from: data)
+            let response = try decoder.decode(ApiResponse<[User]>.self, from: data)
             return response.results ?? []
         } catch {
             print("error:\(error.localizedDescription)")

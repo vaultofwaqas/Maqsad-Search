@@ -18,7 +18,7 @@ protocol SearchViewModel {
     var viewSetup: SearchViewModelViewSetup? { get set }
     
     // MARK: - Variable Protocols
-    var search: [Search] { get set }
+    var user: [User] { get set }
     
     // MARK: - Lifecycle Protocols
     func viewModelDidLoad()
@@ -33,7 +33,7 @@ protocol SearchViewModel {
     func clearSearchResults()
     func isSearchTextEmpty(text: String?) -> Bool
     func didChangeTextForSearch(text: String)
-    func handlePaging(_ itemCount: Int) -> Bool
+    func handlePaging(_ itemCount: Int, _ totalCount: Int) -> Bool
 }
 
 class SearchViewModelImpl {
@@ -44,7 +44,7 @@ class SearchViewModelImpl {
     
     // MARK: - Variables
     var searchManager: SearchApiManagerProtocol!
-    var search: [Search] = []
+    var user: [User] = []
     
     var searchText = ""
     
@@ -91,14 +91,14 @@ extension SearchViewModelImpl {
     }
     
     func searchAPI(_ withPayload: Payload, _ searchText: String) {
-        if search.isEmpty { viewSetup?(.showLoader) }
+        if user.isEmpty { viewSetup?(.showLoader) }
         searchManager.searchAPI(payload: withPayload, searchText: searchText) { [weak self] result in
             guard let self = self else { return }
             self.viewSetup?(.hideLoader)
             switch result {
-            case .success(let (search, text)):
+            case .success(let (response, text)):
                 if self.isTextSimilar(searchText, text) { return }
-                self.showSuccess(with: search)
+                self.showSuccess(with: response)
             case .failure(let message):
                 self.showError(with: message)
             }
@@ -114,11 +114,11 @@ extension SearchViewModelImpl {
     }
     
     func numberOfRowsInSection(section: Int) -> Int {
-        return search.count
+        return user.count
     }
     
     func clearSearchResults() {
-        search = []
+        user.removeAll()
         Constants.SearchView.currentPage = 1
         viewSetup?(.reloadView)
     }
@@ -138,9 +138,9 @@ extension SearchViewModelImpl {
         }
     }
     
-    func handlePaging(_ itemCount: Int) -> Bool {
-        if itemCount == search.count {
-            if Constants.SearchView.currentPage < Constants.SearchView.pageLimit {
+    func handlePaging(_ itemCount: Int, _ totalCount: Int) -> Bool {
+        if itemCount == user.count {
+            if user.count < totalCount {
                 Constants.SearchView.currentPage += 1
                 searchAPI(setSearchPayload(searchText: searchText,
                                            perPage: Constants.SearchView.perPage,
@@ -156,9 +156,9 @@ extension SearchViewModelImpl {
         return currentText != responseText
     }
     
-    func showSuccess(with response: [Search]) {
+    func showSuccess(with response: [User]) {
         DispatchQueue.main.async { [self] in
-            search.append(contentsOf: response)
+            user.append(contentsOf: response)
             viewSetup?(.reloadView)
         }
     }
@@ -170,7 +170,7 @@ extension SearchViewModelImpl {
             case true:
                 showToast(with: Constants.ErrorTypes.noInternet)
             case false:
-                showToast(with: Constants.ErrorTypes.somethingWrong)
+                showToast(with: message)
             }
         }
     }

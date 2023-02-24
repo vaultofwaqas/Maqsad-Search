@@ -8,14 +8,15 @@
 import Foundation
 
 protocol SearchApiManagerProtocol {
-    func searchAPI(payload: Payload, searchText: String, completion: @escaping ResultHandler<([Search], String)>)
+    func searchAPI(payload: Payload, searchText: String, completion: @escaping ResultHandler<([User], String)>)
 }
 
 class SearchApiManager: SearchApiManagerProtocol {
     
-    func searchAPI(payload: Payload, searchText: String, completion: @escaping ResultHandler<([Search], String)>) {
+    func searchAPI(payload: Payload, searchText: String, completion: @escaping ResultHandler<([User], String)>) {
         
-        let request = APIService { response in
+        let request = APIService<[User]> { response in
+            Constants.SearchView.totalCount = response.totalCount.orZero
             completion(.success((response.results ?? [], searchText)))
         } failure: { statusCode, message in
             completion(.failure(message ?? ""))
