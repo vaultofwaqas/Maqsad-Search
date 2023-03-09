@@ -13,14 +13,16 @@ struct ServiceUrls {
 }
 
 extension ServiceUrls {
-    static func getUrl(for endPoints: EndPoints, queryParams: [String: String]) -> URL? {
+    static func getUrl(for endPoints: EndPoints, queryParams: [String: String]?) -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
         urlComponents.host = baseUrl
         urlComponents.path = endPoints.getPath
-
-        urlComponents.queryItems =  queryParams.map { (key, value) in
-            return URLQueryItem(name: key, value: value)
+        
+        if let queryParams = queryParams {
+            urlComponents.queryItems =  queryParams.map { (key, value) in
+                return URLQueryItem(name: key, value: value)
+            }
         }
 
         return urlComponents.url

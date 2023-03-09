@@ -28,9 +28,9 @@ extension APIService {
     func makeCall(_ payload: Payload) {
         
         let urlRequest = URLRequest(url: payload.getUrl(),
-                                    method: payload.getRequestType(),
+                                    method: payload.requestType,
                                     header: nil,
-                                    body: payload.getBody())
+                                    body: payload.parameters)
         
         executeCall(with: urlRequest)
     }

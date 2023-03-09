@@ -9,12 +9,15 @@ import Foundation
 
 // MARK: Main Paths
 enum EndPoints {
+    case empty
     case search(SearchPath)
 }
 
 extension EndPoints {
     var getPath: String {
         switch self {
+        case .empty:
+            return ""
         case .search(let searchText):
             return "/search" + searchText.rawValue
         }

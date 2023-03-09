@@ -86,8 +86,11 @@ extension SearchViewModelImpl {
     }
     
     func setSearchPayload(searchText: String, perPage: Int, page: Int) -> Payload {
-        let payload = Payload(endPoint: .search(.users), parameters: getParams(), requestType: .get)
-        return payload
+        let payloadBuilder = PayloadBuilder()
+        payloadBuilder.setEndPoint(.search(.users))
+        payloadBuilder.setParameters(getParams())
+        payloadBuilder.setRequestType(.get)
+        return payloadBuilder.build()
     }
     
     func searchAPI(_ withPayload: Payload, _ searchText: String) {
